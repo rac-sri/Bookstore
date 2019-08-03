@@ -2,6 +2,12 @@
 <html>
 <head>
 	<title>Bookstore</title>
+	<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+	<script src="/js.js"></script>
+
 </head>
 <body>
 	<h2>Home</h2>
@@ -11,14 +17,14 @@
 		<img src="download.jfif"/>
 		<h4>price:20$</h4>
 		<h4>Items Left: <%= num[0].number  %></h4>
-<button onclick="#">Add To Cart</button>
+<button class = "cart">Add To Cart</button>
 	</div>
 
 	<div>
 		<img src="download (1).jfif"/>
-		<h4>price:20$</h4>
+		<h4>price:25$</h4>
 		<h4>Items Left: <%= num[1].number %></h4>
-		<button onclick="#">Add To Cart</button>
+		<button class = "cart" >Add To Cart</button>
 
 	</div>
 </body>

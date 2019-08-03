@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-
+const bodyParser = require('body-parser');
 const app = express();
 
 const schema = mongoose.Schema({
@@ -21,15 +21,25 @@ mongoose.connect('mongodb://localhost/bookstore' , { useNewUrlParser:"true"})
 	.then(()=>console.log("Connected to mongodb"))	
 	.catch(()=>console.log("Failed"));
 app.set('view engine' , 'ejs');
-
+app.use(bodyParser.json())
 app.get('/', async(req , res)=>
 {
 	num = await data.find();
-	console.log(num);
-	console.log(num[0].number);
 	res.render('index', {num: num});
 });
 
+app.get('/cart',async (req,res)=>
+{	
+	let da = await data.find();
+	let total = (da[0].number*20) + (da[1].number * 25); 
+	res.render('cart', { Total : total});
+}	);
+
+app.post('/number',(req , res)=>
+{
+	console.log(req.number);
+});
 app.listen(3000 , ()=> {
 	console.log("Server Up");
+
 })
