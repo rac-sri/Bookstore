@@ -11,20 +11,20 @@
 </head>
 <body>
 	<h2>Home</h2>
-	<h2><a href = "/cart">Cart</a></h2>
+	<h2><a href = "/cart" >Cart</a></h2>
 
 	<div>
 		<img src="download.jfif"/>
 		<h4>price:20$</h4>
-		<h4>Items Left: <%= num[0].number  %></h4>
-<button class = "cart">Add To Cart</button>
+		<h4>Items Left: <span id="book1"><%= num[0].number  %></span></h4>
+<button class = "cart" name="1">Add To Cart</button>
 	</div>
 
 	<div>
 		<img src="download (1).jfif"/>
 		<h4>price:25$</h4>
-		<h4>Items Left: <%= num[1].number %></h4>
-		<button class = "cart" >Add To Cart</button>
+		<h4>Items Left:<span id="book2"> <%= num[1].number %></span></h4>
+		<button class = "cart" name="2">Add To Cart</button>
 
 	</div>
 </body>

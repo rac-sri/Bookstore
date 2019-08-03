@@ -4,15 +4,16 @@ const bodyParser = require('body-parser');
 const app = express();
 
 const schema = mongoose.Schema({
-	number: Number
+	number: Number,
+	Book : String
 });
 app.use(express.static('public'));
 const data = new mongoose.model('Bookstore',schema);
 
 async function enter()
 {
-	let book1= new data({number:100});
-	let book2= new data({number:100});
+	let book1= new data({number:100 , Book : '1'});
+	let book2= new data({number:100 , Book : '2'});
 	await book1.save();
 	await book2.save();
 }
@@ -35,11 +36,17 @@ app.get('/cart',async (req,res)=>
 	res.render('cart', { Total : total});
 }	);
 
-app.post('/number',(req , res)=>
+app.put('/number',async(req , res)=>
 {
-	console.log(req.number);
+	let number = 100 - req.body.number;
+	let d = await data.findOne({Book : req.body.book});
+	d.number = number;
+	console.log(d.number);
+	d.save()
+	res.status(200).send({value : number});
 });
 app.listen(3000 , ()=> {
 	console.log("Server Up");
-
+	//run if first time
+   //enter();
 })
